@@ -1,11 +1,10 @@
-import Image from 'next/image';
-import { Text } from '@rms-forge/ui-text';
-import styles from './page.module.scss';
+import { fetchFromAPI } from '@lib/config';
+import Home from '@components/Home';
 
-const Home = () => (
-    <Text color="blue" size="b1" className={styles.left}>
-      Hii
-    </Text>
-  );
+const Page = async () => {
+  const data = await fetchFromAPI('/movie/upcoming');
 
-export default Home;
+  return <Home data={data} />;
+};
+
+export default Page;
